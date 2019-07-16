@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ストップウォッチ</title>
+    <meta name="theme-color" content="lightpink">
+    <meta name="viewport" content="width=device-width, initial-scale=0.85, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700" rel="stylesheet">
+    <style media="screen">
+    body{
+      width: 300px;
+      margin: 0 auto;
+    }
+    #sta,#sto{
+      width: 100px;
+      height: 50px;
+      margin: 10px auto;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 20px;
+    }
+    #sta{
+      background: pink;
+    }
+    #sto{
+      background: lightskyblue;
+    }
+    #text{
+      text-align: center;
+      font-size: 30px;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="text">0分0秒</div>
+    <div id="sta">START</div>
+    <div id="sto">STOP</div>
+    <div id="text2"></div>
+
+    <audio id="on" preload="auto">
+    <source src="on.mp3" type="audio/mp3">
+    </audio>
+    <audio id="off" preload="auto">
+    <source src="off.mp3" type="audio/mp3">
+    </audio>
+
+    <script type="text/javascript">
+      var count = 0;
+      var ms = 0;
+      var ss = 0;
+      var cco = 0;
+      var satc = 0;
+
+      function on() {
+　       document.getElementById("on").play();
+      }
+      function off() {
+　       document.getElementById("off").play();
+      }
+
+      sta.addEventListener('click',function(){
+        on();
+        cco = 0;
+        satc = satc+1;
+        if (satc == 1) {
+          var log = function(){
+            count = count+1;
+            ms = Math.floor(count/60);
+            ss = count%60;
+            text.textContent = `${ms}分${ss}秒`;
+            if (cco == 1) {
+              count = count-1;
+              // text2.textContent = cco;
+            }
+          }
+          setInterval(log,1000);
+        }
+      })
+
+      sto.addEventListener('click',function(){
+        off();
+        cco = 1;
+      })
+    </script>
+  </body>
+</html>
