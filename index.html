@@ -71,6 +71,7 @@
             if (cco == 1) {
               count = count-1;
               // text2.textContent = cco;
+              // text.textContent = `${ms}分${ss}秒`;
             }
           }
           setInterval(log,1000);
@@ -79,6 +80,7 @@
 
       sto.addEventListener('click',function(){
         off();
+        count = count-1;
         cco = 1;
       })
     </script>
